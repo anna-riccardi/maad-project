@@ -1,27 +1,138 @@
-<!-- you are allowed to use AI, but please only use things you actually understand  --> 
-<!-- CSS code and information does at the top. this allows you to edit the style of your text, such as color and the like  -->
-<style>
-  a{color: green;} 
-  
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Card Art</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
+        h1 {
+            text-align: center;
+            color: #4682b4;
+            margin-bottom: 20px;
+        }
 
-<!-- all things have an opening and a closing  -->
+        .tarot-cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-<h1> hi there </h1>
+        .tarot-card {
+            text-align: center;
+            width: 200px;
+            margin: 20px;
+        }
 
-<div>
-  <a href="https://netizen.org" target="_blank"> netizen</a>
+        .tarot-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-<img src="https://farm4.static.flickr.com/3593/3319862421_5a22343198_o.jpg" alt="a skeleton looking at a skull on a table">
-</div>
+        .fortune-button {
+            background-color: #ff7f50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
 
+        .fortune-button:hover {
+            background-color: #ff6347;
+        }
 
+        .fortune-box {
+            background-color: #ffb6c1;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pick a Card, Get Your Fortune!</h1>
 
+    <div class="tarot-cards-container">
+        <div class="tarot-card">
+            <h2 style="color: #add8e6;">Death</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" alt="Death Tarot Card">
+            <div class="fortune-box">
+                <button class="fortune-button" onclick="getFortune('death')">Get Your Fortune for Death</button>
+                <div id="fortune-result-death"></div>
+            </div>
+        </div>
 
-<!-- script code goes at the bottom  -->
+        <div class="tarot-card">
+            <h2 style="color: #ffff00;">The Sun</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" alt="The Sun Tarot Card">
+            <div class="fortune-box">
+                <button class="fortune-button" onclick="getFortune('sun')">Get Your Fortune for The Sun</button>
+                <div id="fortune-result-sun"></div>
+            </div>
+        </div>
 
-<script>
+        <div class="tarot-card">
+            <h2 style="color: #ff69b4;">The Lovers</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg" alt="The Lovers Tarot Card">
+            <div class="fortune-box">
+                <button class="fortune-button" onclick="getFortune('lovers')">Get Your Fortune for The Lovers</button>
+                <div id="fortune-result-lovers"></div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        function getFortune(card) {
+            const deathFortunes = [
+                "You may encounter challenges ahead, but remember that change is inevitable and can lead to growth.",
+                "Let go of old habits and beliefs that no longer serve you. Embrace transformation.",
+                "The end of a cycle is near. Embrace the opportunity for new beginnings."
+            ];
 
-</script>
+            const sunFortunes = [
+                "Your future looks bright! Joy and happiness await you.",
+                "Success and achievement are on the horizon. Believe in yourself and your abilities.",
+                "Now is the time to bask in the warmth of success and fulfillment."
+            ];
+
+            const loversFortunes = [
+                "Love is in the air! Open your heart to new connections and experiences.",
+                "Your relationships are flourishing. Focus on nurturing the bonds you share with others.",
+                "Embrace the harmony and balance in your relationships. Trust in the power of love."
+            ];
+
+            let randomFortune;
+
+            if (card === 'death') {
+                randomFortune = deathFortunes[Math.floor(Math.random() * deathFortunes.length)];
+                document.getElementById("fortune-result-death").innerText = randomFortune;
+            } else if (card === 'sun') {
+                randomFortune = sunFortunes[Math.floor(Math.random() * sunFortunes.length)];
+                document.getElementById("fortune-result-sun").innerText = randomFortune;
+            } else if (card === 'lovers') {
+                randomFortune = loversFortunes[Math.floor(Math.random() * loversFortunes.length)];
+                document.getElementById("fortune-result-lovers").innerText = randomFortune;
+            }
+        }
+    </script>
+</body>
+</html>
